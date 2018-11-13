@@ -1,0 +1,42 @@
+﻿<Window x:Class="Clippy.AppHomeScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clippy"
+        mc:Ignorable="d"
+        Title="AppHomeScreen" Height="450" Width="800" Background="Yellow">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox Name ="User_Clipboards" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" 
+                  HorizontalContentAlignment="Center" >
+            <ComboBoxItem Content="Potato"/>
+            <ComboBoxItem/>
+            <ComboBoxItem Content="Vodka"/>
+        </ComboBox>
+        <Button Name="RightClickTest" Grid.Row="1" Grid.Column="1" Content="Dumb Button">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy From Clipboard" Click="Copy_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Paste To Clipboard" Click="Paste_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <TextBlock Grid.Row="2" Grid.Column="1" Background="Gainsboro">
+
+        </TextBlock>
+        <Button Name="Logout" Content="Log Out" Grid.Row="3" Grid.Column="1" Click="Logout_Click"/>
+
+    </Grid>
+</Window>
