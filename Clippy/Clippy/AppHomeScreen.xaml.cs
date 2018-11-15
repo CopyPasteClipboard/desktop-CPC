@@ -44,5 +44,15 @@ namespace Clippy
         {
             MessageBox.Show("THIS IS MEANT TO PASTE TO THE CLIPBOARD");
         }
+
+        private void GetLast_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddLatest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

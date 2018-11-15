@@ -5,38 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clippy"
         mc:Ignorable="d"
-        Title="AppHomeScreen" Height="450" Width="800" Background="Yellow">
+        Title="AppHomeScreen" Height="375" Width="600" Background="#fed330">
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2.5*"/>
-            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="GetLast" Content="Copy Last Item" Grid.Column="0" Height="40"
+                    VerticalAlignment="Top" Click="GetLast_Click"/>
+            <Button Name="AddLatest" Content="Add Item" Grid.Column="1" Click="AddLatest_Click"
+                    Height="40" VerticalAlignment="Top"/>
+        </Grid>
         <ComboBox Name ="User_Clipboards" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" 
-                  HorizontalContentAlignment="Center" >
-            <ComboBoxItem Content="Potato"/>
-            <ComboBoxItem/>
-            <ComboBoxItem Content="Vodka"/>
+                  HorizontalContentAlignment="Center" Height="40" VerticalAlignment="Bottom">
+            <ComboBoxItem Content="Default"/>
+            <ComboBoxItem Content="I need a variable number of these"/>
+            <ComboBoxItem Content="Test"/>
         </ComboBox>
-        <Button Name="RightClickTest" Grid.Row="1" Grid.Column="1" Content="Dumb Button">
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Copy From Clipboard" Click="Copy_Click"/>
-                    <Separator/>
-                    <MenuItem Header="Paste To Clipboard" Click="Paste_Click"/>
+        <TextBlock Name="VisualClipboard" Grid.Column="1" Grid.Row="1" Background="White">
+            <TextBlock.ContextMenu>
+                <ContextMenu Name="RightClickMenu">
+                    <MenuItem Header="Copy" Name="RightClickCopy"/>
+                    <MenuItem Header="Paste" Name="RightClickPaste"/>
                 </ContextMenu>
-            </Button.ContextMenu>
-        </Button>
-        <TextBlock Grid.Row="2" Grid.Column="1" Background="Gainsboro">
-
+            </TextBlock.ContextMenu>
         </TextBlock>
-        <Button Name="Logout" Content="Log Out" Grid.Row="3" Grid.Column="1" Click="Logout_Click"/>
-
+        <StackPanel Name="Tools" Grid.Row="1" Grid.Column="0">
+            <Button Name="NewClipboard" Content="New Clipboard"/>
+            <Button Name="DeleteClipboard" Content="Delete Clipboard"/>
+            <Button Name="Account" Content="My Account"/>
+            <Button Name="Logout" Content="Log Out" Click="Logout_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

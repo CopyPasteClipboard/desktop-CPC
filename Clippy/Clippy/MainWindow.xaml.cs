@@ -46,10 +46,23 @@ namespace Clippy
 
         }
 
+        /**
+         * connectToUserAcct - helper to connect a user to their actual account. Called 
+         * from LoginButton
+         */
         private void connectToUserAcct(String username, String password)
         {
 
         }
+
+        /**
+         * Called from clicking a new account. Idk if I want to create an account in a new window 
+         * or use a Usercontrol or a page sort of system. Page could be neat, although they are 
+         * mostly used in the context of webpages.
+         */
+        private void NewAccount_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
-}
 }

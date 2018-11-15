@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clippy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300" Background="Yellow">
+        Title="MainWindow" Height="300" Width="300" Background="#fed330">
     <Grid Name="WelcomeLoginSignUp" Visibility="Visible">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -20,14 +20,17 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBlock Text="Welcome to Clippy!" Grid.Column="1" Grid.Row ="1" HorizontalAlignment="Center"
-                 VerticalAlignment="Center" Background="Yellow"/>
-        <TextBlock Text="User:  " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-        <TextBlock Text="Password:  " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                 VerticalAlignment="Center" Background="#fed330" Foreground="#4b6584"/>
+        <TextBlock Text="User:  " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top"
+                   Foreground="#4b6584"/>
+        <TextBlock Text="Password:  " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                   Foreground="#4b6584"/>
         <TextBox Name="Username" Grid.Row="2" Grid.Column="1" Height="25" Width="130" VerticalAlignment="Top" />
         <PasswordBox Name="Password" Grid.Row="2" Grid.Column="1" Height="25" Width="130" VerticalAlignment="Bottom"/>
         <Button Name="LoginButton" Content="Login" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"
-                HorizontalAlignment="Center" Click="LoginButton_Click"/>
-        <Button Name="NewAccount" Content="Create Account" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom"
-                HorizontalAlignment="Center" Background="Yellow" BorderBrush="Yellow"/>
+                HorizontalAlignment="Center" Click="LoginButton_Click" Foreground="#4b6584"/>
+        <Button Name="NewAccount" Content="Create Account" Grid.Row="3" Grid.Column="1"
+                HorizontalAlignment="Center" Background="#fed330" BorderBrush="Yellow" Foreground="#4b6584"
+                Click="NewAccount_Click" Margin="31,34,31,0"/>
     </Grid>
 </Window>
