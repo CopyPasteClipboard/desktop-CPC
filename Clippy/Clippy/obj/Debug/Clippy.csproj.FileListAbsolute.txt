@@ -2,12 +2,10 @@ C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\bin\Debug\Clippy.exe.config
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\bin\Debug\Clippy.exe
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\bin\Debug\Clippy.pdb
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.csprojAssemblyReference.cache
-C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\AppHomeScreen.g.cs
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\MainWindow.g.cs
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\App.g.cs
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy_MarkupCompile.cache
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy_MarkupCompile.lref
-C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\AppHomeScreen.baml
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\MainWindow.baml
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.g.resources
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.Properties.Resources.resources
@@ -15,3 +13,11 @@ C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.csproj.Generat
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.csproj.CoreCompileInputs.cache
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.exe
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.pdb
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\AccountView.g.cs
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\AccountView.baml
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\AppWindow.g.cs
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\HomeScreen.g.cs
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\NewClipboard.g.cs
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\AppWindow.baml
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\HomeScreen.baml
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\NewClipboard.baml

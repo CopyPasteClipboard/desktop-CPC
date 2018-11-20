@@ -38,7 +38,7 @@ namespace Clippy
 
             String temp = username + "   " + password;
 
-            AppHomeScreen home = new AppHomeScreen();
+            AppWindow home = new AppWindow();
             home.Show();
             this.Close();
 
