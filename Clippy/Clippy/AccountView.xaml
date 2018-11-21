@@ -9,13 +9,14 @@
       Title="AccountView"
       Background="#fed330">
 
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -31,12 +32,15 @@
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
             Email:
         </TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
             Update Password:
         </TextBlock>
-        <Button Name="ConfirmChanges" Content="Confirm Changes" Grid.Row="4" Grid.Column="1" 
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
+            Phone Number:
+        </TextBlock>
+        <Button Name="ConfirmChanges" Content="Confirm Changes" Grid.Row="5" Grid.Column="1" 
                 VerticalAlignment="Center" HorizontalAlignment="Left" Click="ConfirmChanges_Click"/>
-        <Button Name="Back" Content="Back" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center"
+        <Button Name="Back" Content="Back" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center"
                 VerticalAlignment="Center" Click="Back_Click"/>
         <TextBox Name="NameBox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                  Width="350">
@@ -46,7 +50,11 @@
                  Width="350">
             Placeholder2
         </TextBox>
-        <PasswordBox Name="PasswordBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
+        <TextBox Name="PhoneNumBox" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                 Width="350">
+            Placeholder3
+        </TextBox>
+        <PasswordBox Name="PasswordBox" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center"
                      VerticalAlignment="Center" Width="350"/>
     </Grid>
 </Page>

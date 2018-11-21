@@ -62,7 +62,10 @@ namespace Clippy
          */
         private void NewAccount_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateAccount acct = new CreateAccount();
+            this.Content = acct;
+            this.Height = 450;
+            this.Width = 800;
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clippy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300" Background="#fed330">
+        Title="MainWindow" Height="325" Width="325" Background="#fed330">
     <Grid Name="WelcomeLoginSignUp" Visibility="Visible">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,7 +30,7 @@
         <Button Name="LoginButton" Content="Login" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"
                 HorizontalAlignment="Center" Click="LoginButton_Click" Foreground="#4b6584"/>
         <Button Name="NewAccount" Content="Create Account" Grid.Row="3" Grid.Column="1"
-                HorizontalAlignment="Center" Background="#fed330" BorderBrush="Yellow" Foreground="#4b6584"
+                HorizontalAlignment="Center" Background="#fed330" BorderBrush="#fed330" Foreground="#4b6584"
                 Click="NewAccount_Click" Margin="31,34,31,0"/>
     </Grid>
 </Window>

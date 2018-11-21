@@ -21,3 +21,10 @@ C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\NewClipboard.g.cs
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\AppWindow.baml
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\HomeScreen.baml
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\NewClipboard.baml
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\bin\Debug\Newtonsoft.Json.dll
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\bin\Debug\Newtonsoft.Json.xml
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\Clippy.csproj.CopyComplete
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\CreateAccount.g.cs
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\Clippy\obj\Debug\CreateAccount.baml
