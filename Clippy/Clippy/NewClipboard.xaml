@@ -40,5 +40,18 @@
                  Width="350">
             Placeholder
         </TextBox>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="20">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type RadioButton}">
+                    <Setter Property="Margin" Value="20,0,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton Name="twentyFive" Content="25"/>
+            <RadioButton Name="fifty" Content="50"/>
+            <RadioButton Name="oneHundred" Content="100"/>
+            <RadioButton Name="twoFiddy" Content="250"/>
+            <RadioButton Name="fiveHunnitz" Content="500"/>
+            <RadioButton Name="oneHundredMillion" Content="1000"/>
+        </StackPanel>
     </Grid>
 </Page>
