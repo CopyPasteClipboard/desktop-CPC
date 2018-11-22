@@ -9,7 +9,7 @@
       Title="NewClipboard"
       Background="#fed330">
 
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>

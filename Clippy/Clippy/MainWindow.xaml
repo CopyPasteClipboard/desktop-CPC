@@ -28,7 +28,8 @@
         <TextBox Name="Username" Grid.Row="2" Grid.Column="1" Height="25" Width="130" VerticalAlignment="Top" />
         <PasswordBox Name="Password" Grid.Row="2" Grid.Column="1" Height="25" Width="130" VerticalAlignment="Bottom"/>
         <Button Name="LoginButton" Content="Login" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"
-                HorizontalAlignment="Center" Click="LoginButton_Click" Foreground="#4b6584"/>
+                HorizontalAlignment="Center" Click="LoginButton_Click" Foreground="#4b6584" Background="#fed330"
+                BorderBrush="#fed330"/>
         <Button Name="NewAccount" Content="Create Account" Grid.Row="3" Grid.Column="1"
                 HorizontalAlignment="Center" Background="#fed330" BorderBrush="#fed330" Foreground="#4b6584"
                 Click="NewAccount_Click" Margin="31,34,31,0"/>

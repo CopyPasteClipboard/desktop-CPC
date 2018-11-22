@@ -9,7 +9,7 @@
       Title="HomeScreen"
       Background="#fed330">
 
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>

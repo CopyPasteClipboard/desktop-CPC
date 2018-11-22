@@ -45,5 +45,23 @@ namespace Clippy
               
             }
         }
+
+        private void DeleteAcct_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult deleteAcct = 
+                MessageBox.Show("Are you sure you want to delete your account?","Account Deletion",
+                MessageBoxButton.YesNo);
+
+            if (deleteAcct==MessageBoxResult.Yes)
+            {
+                //Delete the account
+            }
+            else
+            {
+                var win = Window.GetWindow(this);
+                HomeScreen home = new HomeScreen();
+                win.Content = home;
+            }
+        }
     }
 }
