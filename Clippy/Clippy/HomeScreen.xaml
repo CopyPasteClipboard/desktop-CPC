@@ -32,9 +32,6 @@
         </Grid>
         <ComboBox Name ="User_Clipboards" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" 
                   HorizontalContentAlignment="Center" Height="40" VerticalAlignment="Bottom">
-            <ComboBoxItem Content="Default"/>
-            <ComboBoxItem Content="I need a variable number of these"/>
-            <ComboBoxItem Content="Test"/>
         </ComboBox>
         <TextBlock Name="VisualClipboard" Grid.Column="1" Grid.Row="1" Background="White">
             <TextBlock.ContextMenu>

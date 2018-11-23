@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,35 @@ namespace Clippy
         public HomeScreen()
         {
             InitializeComponent();
+            SetupHomeScreen();
+            
+
+        }
+
+
+        private async void SetupHomeScreen()
+        {
+            ClipboardsModel boards = null;
+            //boards = await getClipboards();
+            //Need to uncomment the above line, delete the below when the source is correct
+            boards = new ClipboardsModel();
+            
+            List<String> boardNames = boards.GetClipboardNames();
+            this.User_Clipboards.ItemsSource = boardNames;
+        }
+
+
+        private static async Task<ClipboardsModel> getClipboards()
+        {
+            ClipboardsModel clipboards = null;
+
+            //THIS LOCATION IS NOT CORRECT IM 99% CERTAIN. AT BARE MINIMUM, PUT FAKE :userid IN PLACE
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("v1/user/:userid/clipoards");
+            if (response.IsSuccessStatusCode)
+            {
+                clipboards = await response.Content.ReadAsAsync<ClipboardsModel>();
+            }
+            return clipboards;
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

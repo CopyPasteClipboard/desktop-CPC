@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,7 +29,20 @@ namespace Clippy
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
             //use the text boxes here to create the account and sign the individual into their account
+            AccountInfo acct = new AccountInfo();
+            acct.username = this.EmailBox.Text;
+            acct.password = this.PasswordBox.Password;
+            acct.phone_number = this.PhoneNumBox.Text;
+            PostNewAcct(acct);
 
+
+        }
+
+        private async Task<Uri> PostNewAcct(AccountInfo acct)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("v1/user",acct);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

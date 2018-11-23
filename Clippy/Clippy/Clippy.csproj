@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccountInfo.cs" />
     <Compile Include="ClipboardContentsModel.cs" />
     <Compile Include="UserInfoModel.cs" />
     <Page Include="AccountView.xaml">
