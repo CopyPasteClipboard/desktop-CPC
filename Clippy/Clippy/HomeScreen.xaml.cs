@@ -27,15 +27,12 @@ namespace Clippy
             InitializeComponent();
             ApiHelper.InitializeClient();
             SetupHomeScreen();
-           
         }
 
         private async void SetupHomeScreen()
         {
             ClipboardsModel boards = null;
-            //boards = await getClipboards();
-            //Need to uncomment the above line, delete the below when the source is correct
-            boards = new ClipboardsModel();
+            boards = await getClipboards();
             
             List<String> boardNames = boards.GetClipboardNames();
             this.User_Clipboards.ItemsSource = boardNames;
@@ -44,26 +41,10 @@ namespace Clippy
 
             //Need to pass in an instance of a board object here I think
             List<String> boardContent = await getClipboardContent();
+            VisualClipboard.ItemsSource = boardContent;
         }
 
-        //THIS NEEDS WORK
-        private async Task<List<String>> getClipboardContent()
-        {
-            return new List<String>();
-        }
-
-        private static async Task<ClipboardsModel> getClipboards()
-        {
-            ClipboardsModel clipboards = null;
-
-            //THIS LOCATION IS NOT CORRECT IM 99% CERTAIN. AT BARE MINIMUM, PUT FAKE :userid IN PLACE
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("v1/user/:userid/clipoards");
-            if (response.IsSuccessStatusCode)
-            {
-                clipboards = await response.Content.ReadAsAsync<ClipboardsModel>();
-            }
-            return clipboards;
-        }
+        #region Buttons
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
@@ -73,29 +54,18 @@ namespace Clippy
             home.Show();
             var win = Window.GetWindow(this);
             win.Close();
-
-
-        }
-
-        private void Copy_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("THIS IS MEANT TO COPY FROM CLIPBOARD");
-        }
-
-        private void Paste_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("THIS IS MEANT TO PASTE TO THE CLIPBOARD");
         }
 
         private void GetLast_Click(object sender, RoutedEventArgs e)
         {
-            var last = VisualClipboard.ContentEnd;
-            Clipboard.SetText(last.ToString());
+            VisualClipboard.SelectedIndex = VisualClipboard.Items.Count - 1;
+            String content = VisualClipboard.SelectedItem.ToString();
+            Clipboard.SetText(content);
         }
 
         private void AddLatest_Click(object sender, RoutedEventArgs e)
         {
-            //NEED TO UPDATE THE CLIPBOARD HERE
+            updateClipboard();
         }
 
         private void NewClipboard_Click(object sender, RoutedEventArgs e)
@@ -122,5 +92,71 @@ namespace Clippy
             var win = Window.GetWindow(this);
             win.Content = acct;
         }
+
+        private void SimpleCopy_Click(object sender, RoutedEventArgs e)
+        {
+            if (VisualClipboard.SelectedIndex > -1)
+            {
+                String content = VisualClipboard.SelectedItem.ToString();
+                Clipboard.SetText(content);
+            }
+        }
+
+        private async void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            List<String> clipboardContent = await getClipboardContent();
+            VisualClipboard.ItemsSource = clipboardContent;
+        }
+
+
+        #endregion
+
+        #region API Queries
+
+        private async Task<List<String>> getClipboardContent()
+        {
+            List<String> ret = new List<String>();
+
+            ret.Add("Audi");
+            ret.Add("BMW");
+            ret.Add("Chevrolet");
+            ret.Add("Dodge");
+            ret.Add("Ford");
+            ret.Add("Fiat");
+            ret.Add("GMC");
+            ret.Add("Subaru");
+            ret.Add("Mercedes");
+            ret.Add("Nissan");
+            ret.Add("Datsun");
+            return ret;
+        }
+
+        private static async Task<ClipboardsModel> getClipboards()
+        {
+            ClipboardsModel clipboards = null;
+
+            //0 is the temporary demo :userid
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("v1/user/0/clipoards");
+            if (response.IsSuccessStatusCode)
+            {
+                clipboards = await response.Content.ReadAsAsync<ClipboardsModel>();
+            }
+            return clipboards;
+        }
+
+        private static async Task<Uri> updateClipboard()
+        {
+            string new_item = Clipboard.GetText(TextDataFormat.Text);
+            NewClipboardItem item = new NewClipboardItem();
+            item.new_item = new_item;
+
+            //NEED TO UPDATE BOARD ID
+            HttpResponseMessage response =
+                await ApiHelper.ApiClient.PostAsJsonAsync("v1/clipboard/:boardid/boarditem", item);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
+        }
+
+        #endregion
     }
 }

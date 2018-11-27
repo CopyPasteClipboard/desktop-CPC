@@ -33,15 +33,17 @@
         <ComboBox Name ="User_Clipboards" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" 
                   HorizontalContentAlignment="Center" Height="40" VerticalAlignment="Bottom">
         </ComboBox>
-        <TextBlock Name="VisualClipboard" Grid.Column="1" Grid.Row="1" Background="White">
-            <TextBlock.ContextMenu>
+        <ListBox Name="VisualClipboard" Grid.Column="1" Grid.Row="1" Background="White">
+            <ListBox.ContextMenu>
                 <ContextMenu Name="RightClickMenu">
-                    <MenuItem Header="Copy From Clipboard" Name="RightClickCopy" Click="GetLast_Click"/>
+                    <MenuItem Header="Copy" Name="SimpleCopy" Click="SimpleCopy_Click"/>
+                    <MenuItem Header="Copy Most Recent" Name="RightClickCopy" Click="GetLast_Click"/>
                     <MenuItem Header="Paste to Clipboard" Name="RightClickPaste" Click="AddLatest_Click"/>
                 </ContextMenu>
-            </TextBlock.ContextMenu>
-        </TextBlock>
+            </ListBox.ContextMenu>
+        </ListBox>
         <StackPanel Name="Tools" Grid.Row="1" Grid.Column="0">
+            <Button Name="Refresh" Content="Refresh" Click="Refresh_Click"/>
             <Button Name="NewClipboard" Content="New Clipboard" Click="NewClipboard_Click"/>
             <Button Name="DeleteClipboard" Content="Delete Clipboard" Click="DeleteClipboard_Click"/>
             <Button Name="Account" Content="My Account" Click="Account_Click"/>

@@ -8,8 +8,8 @@ namespace Clippy
 {
     public class UserInfoModel
     {
-        public int id { get; set; }
-        public string username { get; set; }
-        public int phone_number { get; set; }
+        public int ID { get; set; }
+        public string Username { get; set; }
+        public int Phone_number { get; set; }
     }
 }

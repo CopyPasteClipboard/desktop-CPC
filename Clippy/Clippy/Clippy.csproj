@@ -64,6 +64,7 @@
     <Compile Include="AccountInfo.cs" />
     <Compile Include="ClipboardContentsModel.cs" />
     <Compile Include="ClipboardModel.cs" />
+    <Compile Include="NewClipboardItem.cs" />
     <Compile Include="UserInfoModel.cs" />
     <Page Include="AccountView.xaml">
       <SubType>Designer</SubType>
@@ -142,5 +143,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

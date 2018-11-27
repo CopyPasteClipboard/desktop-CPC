@@ -38,7 +38,9 @@ namespace Clippy
 
             String temp = username + "   " + password;
 
-            AppWindow home = new AppWindow();
+            UserInfoModel user = connectToUserAcct(username, password);
+
+            AppWindow home = new AppWindow(user);
             home.Show();
             this.Close();
 
@@ -50,9 +52,12 @@ namespace Clippy
          * connectToUserAcct - helper to connect a user to their actual account. Called 
          * from LoginButton
          */
-        private void connectToUserAcct(String username, String password)
+        private UserInfoModel connectToUserAcct(String username, String password)
         {
+            UserInfoModel ret = new UserInfoModel();
 
+
+            return ret;
         }
 
         /**

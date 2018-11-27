@@ -19,7 +19,18 @@ namespace Clippy
     /// </summary>
     public partial class AppWindow : Window
     {
-        public AppWindow()
+        private UserInfoModel User { get; set; }
+
+        public AppWindow(UserInfoModel _user)
+        {
+            InitializeComponent();
+            User = _user;
+            HomeScreen home = new HomeScreen();
+            this.Content = home;
+        }
+
+
+        private AppWindow()
         {
             InitializeComponent();
             HomeScreen home = new HomeScreen();

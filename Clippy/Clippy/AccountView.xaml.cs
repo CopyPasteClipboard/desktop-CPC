@@ -27,6 +27,8 @@ namespace Clippy
             InitializeComponent();
         }
 
+        #region Buttons
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             var win = Window.GetWindow(this);
@@ -49,22 +51,13 @@ namespace Clippy
 
         }
 
-        private async Task<AccountInfo> UpdateAccount(AccountInfo acct)
-        {
-            //UPDATE THE BELOW LINE WITH PROPER :userid
-            HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync("v1/user/:userid", acct);
-            response.EnsureSuccessStatusCode();
-            AccountInfo ret = await response.Content.ReadAsAsync<AccountInfo>();
-            return ret;
-        }
-
         private void DeleteAcct_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult deleteAcct = 
-                MessageBox.Show("Are you sure you want to delete this account?","Account Deletion",
+            MessageBoxResult deleteAcct =
+                MessageBox.Show("Are you sure you want to delete this account?", "Account Deletion",
                 MessageBoxButton.YesNo);
 
-            if (deleteAcct==MessageBoxResult.Yes)
+            if (deleteAcct == MessageBoxResult.Yes)
             {
                 //Delete the account
                 DeleteAccountRequest();
@@ -81,10 +74,25 @@ namespace Clippy
             }
         }
 
+        #endregion
+
+        #region API Queries
+
+        private async Task<AccountInfo> UpdateAccount(AccountInfo acct)
+        {
+            //UPDATE THE BELOW LINE WITH PROPER :userid
+            HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync("v1/user/:userid", acct);
+            response.EnsureSuccessStatusCode();
+            AccountInfo ret = await response.Content.ReadAsAsync<AccountInfo>();
+            return ret;
+        }
+
         private async Task<HttpStatusCode> DeleteAccountRequest()
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("v1/user/:userid");
             return response.StatusCode;
         }
+
+        #endregion
     }
 }
