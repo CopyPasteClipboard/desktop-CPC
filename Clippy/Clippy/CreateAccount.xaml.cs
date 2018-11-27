@@ -35,7 +35,6 @@ namespace Clippy
             acct.phone_number = this.PhoneNumBox.Text;
             PostNewAcct(acct);
 
-
         }
 
         private async Task<Uri> PostNewAcct(AccountInfo acct)

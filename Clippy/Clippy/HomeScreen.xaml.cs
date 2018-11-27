@@ -21,14 +21,14 @@ namespace Clippy
     /// </summary>
     public partial class HomeScreen : Page
     {
+        
         public HomeScreen()
         {
             InitializeComponent();
+            ApiHelper.InitializeClient();
             SetupHomeScreen();
-            
-
+           
         }
-
 
         private async void SetupHomeScreen()
         {
@@ -39,8 +39,18 @@ namespace Clippy
             
             List<String> boardNames = boards.GetClipboardNames();
             this.User_Clipboards.ItemsSource = boardNames;
+            User_Clipboards.SelectedIndex = User_Clipboards.SelectedIndex = 0;
+
+
+            //Need to pass in an instance of a board object here I think
+            List<String> boardContent = await getClipboardContent();
         }
 
+        //THIS NEEDS WORK
+        private async Task<List<String>> getClipboardContent()
+        {
+            return new List<String>();
+        }
 
         private static async Task<ClipboardsModel> getClipboards()
         {
@@ -79,12 +89,13 @@ namespace Clippy
 
         private void GetLast_Click(object sender, RoutedEventArgs e)
         {
-
+            var last = VisualClipboard.ContentEnd;
+            Clipboard.SetText(last.ToString());
         }
 
         private void AddLatest_Click(object sender, RoutedEventArgs e)
         {
-
+            //NEED TO UPDATE THE CLIPBOARD HERE
         }
 
         private void NewClipboard_Click(object sender, RoutedEventArgs e)

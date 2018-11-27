@@ -36,8 +36,8 @@
         <TextBlock Name="VisualClipboard" Grid.Column="1" Grid.Row="1" Background="White">
             <TextBlock.ContextMenu>
                 <ContextMenu Name="RightClickMenu">
-                    <MenuItem Header="Copy" Name="RightClickCopy"/>
-                    <MenuItem Header="Paste" Name="RightClickPaste"/>
+                    <MenuItem Header="Copy From Clipboard" Name="RightClickCopy" Click="GetLast_Click"/>
+                    <MenuItem Header="Paste to Clipboard" Name="RightClickPaste" Click="AddLatest_Click"/>
                 </ContextMenu>
             </TextBlock.ContextMenu>
         </TextBlock>

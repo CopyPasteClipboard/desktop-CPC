@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="AccountInfo.cs" />
     <Compile Include="ClipboardContentsModel.cs" />
+    <Compile Include="ClipboardModel.cs" />
     <Compile Include="UserInfoModel.cs" />
     <Page Include="AccountView.xaml">
       <SubType>Designer</SubType>
