@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clippy
 {
-    class NewClipboardItem
+    public class NewClipboardItem
     {
         public string new_item { get; set; }
     }

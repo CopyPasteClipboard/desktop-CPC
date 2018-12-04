@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Clippy;
 using System.Collections.Generic;
 using System.Net.Http;
+using Clippy.ApiClasses;
 
 namespace ClippyTests
 {
@@ -13,30 +14,29 @@ namespace ClippyTests
         public void TestCurrentUserCtor1()
         {
             UserLoginInfoModel login = new UserLoginInfoModel();
-            login.ID = 1;
-            login.Phone_number = "123-456-7899";
-            login.Username = "Jane@doe.scam";
+            login.id = 1;
+            login.inserted_at = "123-456-7899";
+            login.username = "Jane@doe.scam";
 
             CurrentUser user = new CurrentUser(login);
 
-            Assert.AreEqual(user.GetUserId(), login.ID);
-            Assert.AreEqual(user.GetPhoneNumber(), login.Phone_number);
-            Assert.AreEqual(user.GetUsername(), login.Username);
+            Assert.AreEqual(user.GetUserId(), login.id);
+            Assert.AreEqual(user.GetUsername(), login.username);
         }
 
         [TestMethod]
         public void TestCurrentUserCtor2()
         {
             UserLoginInfoModel login = new UserLoginInfoModel();
-            login.ID = -1;
-            login.Phone_number = null;
-            login.Username = "Jane@doe.scam";
+            login.id = -1;
+            login.inserted_at = null;
+            login.username = "Jane@doe.scam";
 
             CurrentUser user = new CurrentUser(login);
 
-            Assert.AreEqual(user.GetUserId(), login.ID);
+            Assert.AreEqual(user.GetUserId(), login.id);
             Assert.AreEqual(user.GetPhoneNumber(), null);
-            Assert.AreEqual(user.GetUsername(), login.Username);
+            Assert.AreEqual(user.GetUsername(), login.username);
         }
 
         [TestMethod]
@@ -57,9 +57,9 @@ namespace ClippyTests
             }
 
             UserLoginInfoModel login = new UserLoginInfoModel();
-            login.ID = 1;
-            login.Phone_number = "123-456-7899";
-            login.Username = "Jane@doe.scam";
+            login.id = 1;
+            login.inserted_at = null;
+            login.username = "Jane@doe.scam";
 
             CurrentUser user = new CurrentUser(login);
             user.SetClipboards(clipboards);
@@ -91,7 +91,7 @@ namespace ClippyTests
             {
                 ApiHelper.InitializeClient();
             }
-            Assert.AreEqual(ApiHelper.ApiClient.BaseAddress, new Uri("http://34.224.86.78:8080/"));
+            Assert.AreEqual(ApiHelper.ApiClient.BaseAddress, new Uri("http://54.162.248.95"));
         }
 
         [TestMethod]
@@ -103,6 +103,117 @@ namespace ClippyTests
             ApiHelper.ApiClient = tester;
             Assert.AreNotEqual(ApiHelper.ApiClient, other);
             Assert.AreEqual(tester, ApiHelper.ApiClient);
+        }
+
+        [TestMethod]
+        public void TestAccountInfoModel1()
+        {
+            AccountInfoModel test = new AccountInfoModel();
+            test.username = "";
+            test.password = "";
+            test.phone_number = "";
+
+            Assert.AreEqual(test.username, "");
+            Assert.AreEqual(test.password.Length, 0);
+            Assert.AreEqual(test.phone_number.Length, 0);
+
+        }
+
+        [TestMethod]
+        public void TestClipboardContentsModel1()
+        {
+            ClipboardContentsModel clipboardContents =
+                new ClipboardContentsModel();
+            clipboardContents.board_id = -1;
+            clipboardContents.id = -1;
+            clipboardContents.text_content = "";
+
+            Assert.AreEqual(clipboardContents.board_id, -1);
+            Assert.AreEqual(clipboardContents.id, -1);
+            Assert.AreEqual(clipboardContents.text_content.Length, 0);
+        }
+
+        [TestMethod]
+        public void TestClipboardModel1()
+        {
+            ClipboardModel board = new ClipboardModel();
+            board.board_name = "";
+            board.id = -1;
+
+            Assert.AreEqual(board.board_name.Length, 0);
+            Assert.AreEqual(board.id, -1);
+        }
+
+        [TestMethod]
+        public void TestCreateAccountModel1()
+        {
+            CreateAccountModel model = new CreateAccountModel();
+            Assert.IsNull(model.username);
+            Assert.IsNull(model.password);
+            Assert.IsNull(model.phone_number);
+
+        }
+
+        [TestMethod]
+        public void TestCreateAccountModel2()
+        {
+            CreateAccountModel model = new CreateAccountModel();
+
+            model.username = "";
+            model.password = "";
+            model.phone_number = "";
+
+            Assert.IsNotNull(model.username);
+            Assert.IsNotNull(model.password);
+            Assert.IsNotNull(model.phone_number);
+
+        }
+
+        [TestMethod]
+        public void TestNewClipboardItem1()
+        {
+            NewClipboardItem model = new NewClipboardItem();
+            model.new_item = "";
+
+            Assert.AreEqual(model.new_item, "");
+
+        }
+
+        [TestMethod]
+        public void TestSimpleLoginPostModel1()
+        {
+            SimpleLoginPostModel model = new SimpleLoginPostModel();
+            Assert.IsNull(model.username);
+        }
+
+        [TestMethod]
+        public void TestSimpleLoginPostModel2()
+        {
+            SimpleLoginPostModel model = new SimpleLoginPostModel();
+            model.username = "";
+            Assert.AreEqual(model.username, "");
+        }
+
+        [TestMethod]
+        public void TestUserLoginInfoModel1()
+        {
+            UserLoginInfoModel model = new UserLoginInfoModel();
+            Assert.IsNull(model.username);
+            Assert.IsNull(model.inserted_at);
+            Assert.AreEqual(model.id, -1);
+        }
+
+        [TestMethod]
+        public void TestUserLoginInfoModel2()
+        {
+            UserLoginInfoModel model = new UserLoginInfoModel();
+            model.id = 0;
+            model.inserted_at = "x";
+            model.username = "y";
+
+            Assert.AreEqual(model.id, 0);
+            Assert.AreEqual(model.inserted_at, "x");
+            Assert.AreEqual(model.username, "y");
         }
     }
 }

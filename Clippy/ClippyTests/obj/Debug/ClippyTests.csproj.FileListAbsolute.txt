@@ -1,3 +1,5 @@
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\obj\Debug\ClippyTests.csprojAssemblyReference.cache
+C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\obj\Debug\ClippyTests.csproj.CoreCompileInputs.cache
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -14,8 +16,6 @@ C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\bin\Debug\Microsoft.Visual
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\bin\Debug\Newtonsoft.Json.xml
-C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\obj\Debug\ClippyTests.csprojAssemblyReference.cache
-C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\obj\Debug\ClippyTests.csproj.CoreCompileInputs.cache
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\obj\Debug\ClippyTests.csproj.CopyComplete
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\obj\Debug\ClippyTests.dll
 C:\Users\hapah\Desktop\desktop-CPC\Clippy\ClippyTests\obj\Debug\ClippyTests.pdb

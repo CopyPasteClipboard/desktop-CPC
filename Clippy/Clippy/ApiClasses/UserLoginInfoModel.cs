@@ -9,7 +9,7 @@ namespace Clippy
     public class UserLoginInfoModel
     {
         public int id { get; set; } = -1;
-        public string username { get; set; }
-        public string inserted_at { get; set; }
+        public string username { get; set; } = null;
+        public string inserted_at { get; set; } = null;
     }
 }

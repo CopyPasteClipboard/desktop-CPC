@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clippy.ApiClasses
 {
-    class SimpleLoginPostModel
+    public class SimpleLoginPostModel
     {
         public string username { get; set; } = null;
     }

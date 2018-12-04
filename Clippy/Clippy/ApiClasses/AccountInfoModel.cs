@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clippy.ApiClasses
 {
-    class AccountInfoModel
+    public class AccountInfoModel
     {
         public string username;
         public string password;

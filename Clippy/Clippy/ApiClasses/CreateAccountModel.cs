@@ -10,7 +10,7 @@ namespace Clippy.ApiClasses
     /// Class used as a model to create a new account using the api. Members are
     /// api post params
     /// </summary>
-    class CreateAccountModel
+    public class CreateAccountModel
     {
         public string username { get; set; } = null;
         public string password { get; set; } = null;
