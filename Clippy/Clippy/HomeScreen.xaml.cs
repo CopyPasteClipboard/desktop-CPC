@@ -128,9 +128,9 @@ namespace Clippy
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AddLatest_Click(object sender, RoutedEventArgs e)
+        private async void AddLatest_Click(object sender, RoutedEventArgs e)
         {
-            UpdateClipboard();
+            await UpdateClipboard();
             SetupHomeScreen();
         }
 
