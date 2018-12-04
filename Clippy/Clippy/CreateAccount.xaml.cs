@@ -40,7 +40,14 @@ namespace Clippy
                 acct.username = this.EmailBox.Text;
                 acct.password = this.PasswordBox.Password;
                 acct.phone_number = this.PhoneNumBox.Text;
-                PostNewAcct(acct);
+
+                try
+                {
+                    PostNewAcct(acct);
+                }
+                catch (HttpRequestException) {
+                    MessageBox.Show("API Connection Failure");
+                }
             }
             else
             {

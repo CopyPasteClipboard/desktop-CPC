@@ -47,11 +47,19 @@ namespace Clippy
         {
             //Gets all the clipboard names to be displayed on the homescreen
             List<ClipboardModel> boards = null;
-            boards = await GetClipboards();
 
+            try
+            {
+                boards = await GetClipboards();
+            }catch(HttpRequestException)
+            {
+                MessageBox.Show("Features and state may not be present/saved while API is unreachable",
+                    "API is Unreachable");
+                boards = new List<ClipboardModel>();
+            }
             List<String> boardNames = new List<String>();
 
-            if (boards != null)
+            if (boards != null && boards.Count!=0)
             {
                 foreach (ClipboardModel board in boards)
                 {
@@ -65,7 +73,13 @@ namespace Clippy
             User_Clipboards.SelectedIndex = User_Clipboards.SelectedIndex = 0;
 
             //Gets all of the initial board contents to display on the home screen
-            List<ClipboardContentsModel> boardContents = await GetClipboardContent();
+            List<ClipboardContentsModel> boardContents = null;
+            try
+            {
+                boardContents = await GetClipboardContent();
+            }
+            catch (HttpRequestException) {}
+
             List<String> content = new List<String>();
             if (boardContents != null)
             {
@@ -201,7 +215,6 @@ namespace Clippy
             string uri = "/v1/clipboard/" + User.GetUserId() +"?type=mostRecent || type=all";
             String response = 
                 await ApiHelper.ApiClient.GetStringAsync(uri);
-            //[{"id":6,"board_id":"0","text_content":"hi keaton"}] = Json example string in response
             List<ClipboardContentsModel> content = 
                 JsonConvert.DeserializeObject<List<ClipboardContentsModel>>(response);
             return content;
@@ -213,35 +226,6 @@ namespace Clippy
         /// <returns>List of ClipboardModels</returns>
         private async Task<List<ClipboardModel>> GetClipboards()
         {
-            //Hard coded :userid as 0 for the demo
-
-            //HttpClient client = new HttpClient();
-
-
-            //String other_addr = "http://34.224.86.78:8080/v1/clipboard/0/boarditem";
-            //NewClipboardItem ok = new NewClipboardItem();
-            //ok.new_item = "420";
-            //var add = JsonConvert.SerializeObject(ok);
-            //Trace.WriteLine(add);
-            //var buffer = System.Text.Encoding.UTF8.GetBytes(add);
-            //var byteContent = new ByteArrayContent(buffer);
-            //await client.PostAsync(other_addr, byteContent);
-
-
-            //This line works for API requests. 
-            //await ApiHelper.ApiClient.PostAsJsonAsync("/v1/clipboard/0/boarditem", ok);
-
-
-            //user = bananaland
-            //password = coffeeyummy
-
-
-            //String addr = "http://34.224.86.78:8080/v1/user/0/clipboards";
-
-
-
-            //AppWindow myWin = Window.GetWindow(this) as Clippy.AppWindow;
-            //string id = myWin.GetUserId().ToString();
             string uri = "/v1/user/" + User.GetUserId() + "/clipboards";
             String response = await ApiHelper.ApiClient.GetStringAsync(uri);
             var data = JsonConvert.DeserializeObject<List<ClipboardModel>>(response);

@@ -36,15 +36,17 @@ namespace Clippy
             ClipboardModel board = new ClipboardModel();
             board.board_name = this.NameBox.Text;
 
-
-
             //LOL UPDATE THIS ASAP
-            board.id = 6; //"SOME USERID THAT I NEED TO GET FROM SOMEWHERE";
+            board.id = User.GetUserId(); //"SOME USERID THAT I NEED TO GET FROM SOMEWHERE";
 
-
-
-
-            AddNewClipboard(board);
+            try
+            {
+                AddNewClipboard(board);
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show("API Connection Failure");
+            }
 
             HomeScreen home = new HomeScreen(User);
             var win = Window.GetWindow(this);

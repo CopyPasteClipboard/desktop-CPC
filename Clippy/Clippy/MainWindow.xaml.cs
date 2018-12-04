@@ -39,6 +39,7 @@ namespace Clippy
             if(username.Length > 0 && password.Length > 0)
             {
                 LoginButton.IsEnabled = false;
+                NewAccount.IsEnabled = false;
                 //attempt log in API call (is what this should be)
                 try
                 {
@@ -53,6 +54,7 @@ namespace Clippy
                     {
                         MessageBox.Show("Invalid Username/Passord");
                         LoginButton.IsEnabled = true;
+                        NewAccount.IsEnabled = true;
                     }
                 }
                 catch (HttpRequestException)
@@ -78,6 +80,7 @@ namespace Clippy
                     else
                     {
                         LoginButton.IsEnabled = true;
+                        NewAccount.IsEnabled = true;
                     }
 
                 }

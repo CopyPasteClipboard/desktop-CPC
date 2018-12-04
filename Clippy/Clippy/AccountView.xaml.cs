@@ -49,7 +49,15 @@ namespace Clippy
             acct.username = EmailBox.Text;
             acct.password = PasswordBox.Password;
             acct.phone_number = PhoneNumBox.Text;
-            UpdateAccount(acct);
+
+            try
+            {
+                UpdateAccount(acct);
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show("API Connection Failure");
+            }
 
             HomeScreen home = new HomeScreen(User);
             var win = Window.GetWindow(this);
@@ -66,7 +74,15 @@ namespace Clippy
             if (deleteAcct == MessageBoxResult.Yes)
             {
                 //Delete the account
-                DeleteAccountRequest();
+
+                try
+                {
+                    DeleteAccountRequest();
+                }
+                catch (HttpRequestException)
+                {
+                    MessageBox.Show("API Connection Failure");
+                }
                 MainWindow login_screen = new MainWindow();
                 login_screen.Show();
                 var old_window = Window.GetWindow(this);
