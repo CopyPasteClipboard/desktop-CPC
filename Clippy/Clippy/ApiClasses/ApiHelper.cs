@@ -5,6 +5,7 @@ using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
+using System.Net.NetworkInformation;
 
 namespace Clippy
 {
@@ -12,12 +13,14 @@ namespace Clippy
     {
         public static HttpClient ApiClient { get; set; } = null;
 
+        private static readonly string Uri = "http://54.162.248.95";
+
         public static void InitializeClient()
         {
-            ApiClient = new HttpClient();
-            ApiClient.BaseAddress = new Uri("http://54.162.248.95");
-            ApiClient.DefaultRequestHeaders.Accept.Clear();
-            ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                ApiClient = new HttpClient();
+                ApiClient.BaseAddress = new Uri(Uri);
+                ApiClient.DefaultRequestHeaders.Accept.Clear();
+                ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
     }
 }
