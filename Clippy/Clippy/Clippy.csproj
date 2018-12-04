@@ -66,6 +66,7 @@
     <Compile Include="ApiClasses\ClipboardModel.cs" />
     <Compile Include="ApiClasses\CreateAccountModel.cs" />
     <Compile Include="ApiClasses\NewClipboardItem.cs" />
+    <Compile Include="ApiClasses\SimpleLoginPostModel.cs" />
     <Compile Include="ApiClasses\UserLoginInfoModel.cs" />
     <Page Include="AccountView.xaml">
       <SubType>Designer</SubType>

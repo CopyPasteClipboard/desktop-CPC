@@ -101,9 +101,12 @@ namespace Clippy
         /// <param name="e"></param>
         private void GetLast_Click(object sender, RoutedEventArgs e)
         {
-            VisualClipboard.SelectedIndex = VisualClipboard.Items.Count - 1;
-            String content = VisualClipboard.SelectedItem.ToString();
-            Clipboard.SetText(content);
+            if (VisualClipboard.Items.Count > 0)
+            {
+                VisualClipboard.SelectedIndex = VisualClipboard.Items.Count - 1;
+                String content = VisualClipboard.SelectedItem.ToString();
+                Clipboard.SetText(content);
+            }
         }
 
         /// <summary>

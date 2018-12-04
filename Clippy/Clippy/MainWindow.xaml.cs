@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Clippy.ApiClasses;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,11 +40,34 @@ namespace Clippy
             {
 
                 //attempt log in API call (is what this should be)
-                UserLoginInfoModel user = await connectToUserAcct(username, password);
+                try
+                {
+                    UserLoginInfoModel user = await connectToUserAcct(username, password);
+                    AppWindow home = new AppWindow(user);
+                    home.Show();
+                    this.Close();
+                }
+                catch (HttpRequestException)
+                {
+                    var result = MessageBox.Show(
+                        "Connection Failed Successfully. Yes to continue without account, " +
+                        "No to re-attempt login, Cancel to close the application",
+                        "No API Response", MessageBoxButton.YesNoCancel);
 
-                AppWindow home = new AppWindow(user);
-                home.Show();
-                this.Close();
+                    if(result == MessageBoxResult.Yes)
+                    {
+                        UserLoginInfoModel user = new UserLoginInfoModel();
+                        user.id = 0;
+                        user.username = "Jane_Doe@fake.scam";
+                        user.inserted_at = "potatoes";
+                        AppWindow home = new AppWindow(user);
+                        home.Show();
+                        this.Close();
+                    }else if(result == MessageBoxResult.Cancel)
+                    {
+                        this.Close();
+                    }
+                }
             }
             else
             {
@@ -69,7 +95,22 @@ namespace Clippy
         {
             UserLoginInfoModel ret = new UserLoginInfoModel();
 
-            //api calls to log in a user
+            SimpleLoginPostModel loginInfo = new SimpleLoginPostModel();
+            loginInfo.username = username;
+
+            if (ApiHelper.ApiClient == null)
+            {
+                ApiHelper.InitializeClient();
+            }
+
+            HttpResponseMessage response = 
+                await ApiHelper.ApiClient.PostAsJsonAsync("/v1/login", loginInfo);
+            ret = JsonConvert.DeserializeObject<UserLoginInfoModel>(response.Content.ToString());
+            
+
+            //id (int)
+            //username (string)
+            //inserted_at (date time)
 
             return ret;
         }

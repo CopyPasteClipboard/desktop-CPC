@@ -31,7 +31,6 @@ namespace Clippy
             User = user;
             NameBox.Text = "Jane Doe";
             EmailBox.Text = User.GetUsername();
-            PhoneNumBox.Text = User.GetPhoneNumber();
         }
 
         #region Buttons

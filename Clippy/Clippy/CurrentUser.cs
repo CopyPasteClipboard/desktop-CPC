@@ -17,9 +17,8 @@ namespace Clippy
 
         public CurrentUser(UserLoginInfoModel info)
         {
-            Username = info.Username;
-            UserId = info.ID;
-            Phone = info.Phone_number;
+            Username = info.username;
+            UserId = info.id;
         }
 
         public string GetUsername()
