@@ -32,6 +32,11 @@ namespace Clippy
             return Phone;
         }
 
+        public int GetUserId()
+        {
+            return UserId;
+        }
+
         public void SetClipboards(List<ClipboardModel> boards)
         {
             Clipboards = boards;
@@ -40,20 +45,18 @@ namespace Clippy
         public int GetBoardId(string boardName)
         {
             int ret = -1;
-            foreach(ClipboardModel board in Clipboards)
+            if (Clipboards != null)
             {
-                if (board.board_name.Equals(boardName.Trim()))
+                foreach (ClipboardModel board in Clipboards)
                 {
-                    ret = board.id;
-                    break;
+                    if (board.board_name.Equals(boardName.Trim()))
+                    {
+                        ret = board.id;
+                        break;
+                    }
                 }
             }
             return ret;
-        }
-
-        public int GetUserId()
-        {
-            return UserId;
         }
     }
 }

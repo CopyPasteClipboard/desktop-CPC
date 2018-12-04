@@ -48,7 +48,7 @@ namespace Clippy
 
             HomeScreen home = new HomeScreen(User);
             var win = Window.GetWindow(this);
-            win.Content = win;
+            win.Content = home;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

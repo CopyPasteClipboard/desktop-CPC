@@ -10,7 +10,7 @@ namespace Clippy
 {
     public static class ApiHelper
     {
-        public static HttpClient ApiClient { get; set; }
+        public static HttpClient ApiClient { get; set; } = null;
 
         public static void InitializeClient()
         {
