@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Clippy.ApiClasses
 {
+    /// <summary>
+    /// Model class for updating an account's information. Used primarily in AccountView.xaml.cs
+    /// </summary>
     public class AccountInfoModel
     {
         public string username;

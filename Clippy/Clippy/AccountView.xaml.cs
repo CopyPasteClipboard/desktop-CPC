@@ -23,8 +23,13 @@ namespace Clippy
     /// </summary>
     public partial class AccountView : Page
     {
+        //user data passed to the page
         private CurrentUser User;
 
+        /// <summary>
+        /// ctor to create the page and initial contents
+        /// </summary>
+        /// <param name="user"></param>
         public AccountView(CurrentUser user)
         {
             InitializeComponent();
@@ -35,6 +40,11 @@ namespace Clippy
 
         #region Buttons
 
+        /// <summary>
+        /// button logic to return to HomeScreen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             var win = Window.GetWindow(this);
@@ -42,6 +52,11 @@ namespace Clippy
             win.Content = home;
         }
 
+        /// <summary>
+        /// Button logic to commit changes to a user account
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConfirmChanges_Click(object sender, RoutedEventArgs e)
         {
             //update the acct
@@ -65,6 +80,12 @@ namespace Clippy
 
         }
 
+
+        /// <summary>
+        /// Button logic to delete an account
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteAcct_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult deleteAcct =
@@ -100,6 +121,11 @@ namespace Clippy
 
         #region API Queries
 
+        /// <summary>
+        /// API call to update account information
+        /// </summary>
+        /// <param name="acct"></param>
+        /// <returns></returns>
         private async Task<AccountInfoModel> UpdateAccount(AccountInfoModel acct)
         {
             //UPDATE THE BELOW LINE WITH PROPER :userid
@@ -109,6 +135,10 @@ namespace Clippy
             return ret;
         }
 
+        /// <summary>
+        /// API call tp delete an account
+        /// </summary>
+        /// <returns></returns>
         private async Task<HttpStatusCode> DeleteAccountRequest()
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("v1/user/:userid");

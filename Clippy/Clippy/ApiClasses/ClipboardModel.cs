@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Clippy
 {
+    /// <summary>
+    /// Model class representing a single clipboard. Primarily called from HomeScreen
+    /// </summary>
     public class ClipboardModel
     {
         public int id { get; set; }

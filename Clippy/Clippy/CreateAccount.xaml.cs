@@ -22,6 +22,9 @@ namespace Clippy
     /// </summary>
     public partial class CreateAccount : Page
     {
+        /// <summary>
+        /// Simple ctor
+        /// </summary>
         public CreateAccount()
         {
             InitializeComponent();
@@ -29,6 +32,11 @@ namespace Clippy
 
         #region Buttons
 
+        /// <summary>
+        /// Confirm account creation logic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
             //use the text boxes here to create the account and sign the individual into their account
@@ -57,6 +65,11 @@ namespace Clippy
 
         }
 
+        /// <summary>
+        /// Cancel the account creation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             //Return to the login screen

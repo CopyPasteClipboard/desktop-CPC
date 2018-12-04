@@ -9,11 +9,14 @@ using System.Net.NetworkInformation;
 
 namespace Clippy
 {
+    /// <summary>
+    /// Class to help manage the HttpClient and provide the basis for API access
+    /// </summary>
     public static class ApiHelper
     {
         public static HttpClient ApiClient { get; set; } = null;
 
-        private static readonly string Uri = "http://54.162.248.95";
+        private static readonly string Uri = "http://54.162.248.95:4000";
 
         public static void InitializeClient()
         {

@@ -240,7 +240,7 @@ namespace Clippy
         {
             string new_item = Clipboard.GetText(TextDataFormat.Text);
             NewClipboardItem item = new NewClipboardItem();
-            item.new_item = new_item;
+            item.board_item = new_item;
 
             string uri = "/v1/clipboard/" + User.GetBoardId(this.User_Clipboards.Text)
                 + "/boarditem";
@@ -253,6 +253,11 @@ namespace Clippy
 
         #endregion
 
+        /// <summary>
+        /// Loads new clipboard content whenever a user selects a new clipboard.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void User_Clipboards_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             String new_selection = e.AddedItems[0].ToString();

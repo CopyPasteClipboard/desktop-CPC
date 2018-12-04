@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Clippy
 {
+    /// <summary>
+    /// Class representing the returned data from logging in.
+    /// </summary>
     public class UserLoginInfoModel
     {
         public int id { get; set; } = -1;

@@ -16,10 +16,14 @@ namespace Clippy
 {
     /// <summary>
     /// Interaction logic for AppWindow.xaml
+    /// Creates the window for main application functionality
     /// </summary>
     public partial class AppWindow : Window
     {
-
+        /// <summary>
+        /// ctor that converts a UserLoginInfoModel to a CurrentUser
+        /// </summary>
+        /// <param name="loginInfo"></param>
         public AppWindow(UserLoginInfoModel loginInfo)
         {
             InitializeComponent();

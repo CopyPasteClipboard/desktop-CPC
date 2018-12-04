@@ -124,7 +124,10 @@ namespace Clippy
 
             if (response.IsSuccessStatusCode)
             {
-                ret = JsonConvert.DeserializeObject<UserLoginInfoModel>(response.Content.ToString());
+                var a = response.ToString();
+
+                string content = await response.Content.ReadAsStringAsync();
+                ret = JsonConvert.DeserializeObject<UserLoginInfoModel>(content);
             }
             
 
