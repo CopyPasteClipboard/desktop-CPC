@@ -38,14 +38,22 @@ namespace Clippy
 
             if(username.Length > 0 && password.Length > 0)
             {
-
+                LoginButton.IsEnabled = false;
                 //attempt log in API call (is what this should be)
                 try
                 {
                     UserLoginInfoModel user = await connectToUserAcct(username, password);
-                    AppWindow home = new AppWindow(user);
-                    home.Show();
-                    this.Close();
+                    if (user.id != -1)
+                    {
+                        AppWindow home = new AppWindow(user);
+                        home.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Username/Passord");
+                        LoginButton.IsEnabled = true;
+                    }
                 }
                 catch (HttpRequestException)
                 {
@@ -67,6 +75,11 @@ namespace Clippy
                     {
                         this.Close();
                     }
+                    else
+                    {
+                        LoginButton.IsEnabled = true;
+                    }
+
                 }
             }
             else
@@ -105,7 +118,11 @@ namespace Clippy
 
             HttpResponseMessage response = 
                 await ApiHelper.ApiClient.PostAsJsonAsync("/v1/login", loginInfo);
-            ret = JsonConvert.DeserializeObject<UserLoginInfoModel>(response.Content.ToString());
+
+            if (response.IsSuccessStatusCode)
+            {
+                ret = JsonConvert.DeserializeObject<UserLoginInfoModel>(response.Content.ToString());
+            }
             
 
             //id (int)
