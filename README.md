@@ -40,7 +40,13 @@ Pages were developed as a tool for web applications, however they are just as ap
 ### CurrentUser.cs
 This class is one of the most important in the application. It contains all of the information relevant to the application user such as username, password, user ID, user clipboards and board ID's, and provides the application with ways to access the needed information. The class is passed through the application pages such that each page has access to the pertinent user information. A future version of Clippy would involve making this class into a more proper singleton, initialized to a "null" value before a user logs in and after they log out.
 
+### ClippyTests
+This is the unit testing project that was used to implement small unit tests on the Clippy application. The solution contains ClippyTests.cs, which is the actual test file where unit tests are written. The unit tests created were meant to test the components of the application that are likely to change in future iterations, particularly the varying files in ApiClasses.
 
+### Integration Tests
+
+
+More details on any of these files can be found inside the files themselves.
 
 
 

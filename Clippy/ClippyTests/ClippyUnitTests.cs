@@ -8,7 +8,7 @@ using Clippy.ApiClasses;
 namespace ClippyTests
 {
     [TestClass]
-    public class ClippyTest
+    public class ClippyUnitTests
     {
         [TestMethod]
         public void TestCurrentUserCtor1()
@@ -68,6 +68,18 @@ namespace ClippyTests
             Assert.AreEqual(user.GetBoardId(test),test.Length);
             Assert.AreEqual(user.GetBoardId(""), -1);
             Assert.AreEqual(user.GetBoardId("iabcd"), -1);
+        }
+
+        [TestMethod]
+        public void TestCurrentUserGetPhone()
+        {
+            UserLoginInfoModel login = new UserLoginInfoModel();
+            login.id = -1;
+            login.inserted_at = null;
+            login.username = "Jane@doe.scam";
+
+            CurrentUser user = new CurrentUser(login);
+            Assert.IsNull(user.GetPhoneNumber());
         }
 
         [TestMethod]
@@ -172,10 +184,10 @@ namespace ClippyTests
         [TestMethod]
         public void TestNewClipboardItem1()
         {
-            NewClipboardItem model = new NewClipboardItem();
-            model.new_item = "";
+            NewClipboardItemModel model = new NewClipboardItemModel();
+            model.board_item = "";
 
-            Assert.AreEqual(model.new_item, "");
+            Assert.AreEqual(model.board_item, "");
 
         }
 
