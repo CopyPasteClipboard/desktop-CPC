@@ -39,6 +39,7 @@ namespace Clippy
         /// <param name="e"></param>
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
+            
             //use the text boxes here to create the account and sign the individual into their account
             if (!EmailBox.Text.Trim().Equals("") &&
                 !PasswordBox.Password.Trim().Equals("") &&
@@ -52,6 +53,7 @@ namespace Clippy
                 try
                 {
                     PostNewAcct(acct);
+                    
                 }
                 catch (HttpRequestException) {
                     MessageBox.Show("API Connection Failure");
@@ -62,6 +64,13 @@ namespace Clippy
                 MessageBox.Show("Please enter all information",
                     "Invalid Account Information", MessageBoxButton.OK);
             }
+
+            
+            MainWindow newWindow = new MainWindow();
+            newWindow.Show();
+            var win = Window.GetWindow(this);
+            win.Close();
+            
 
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clippy.ApiClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -33,11 +34,11 @@ namespace Clippy
         private void ConfirmChanges_Click(object sender, RoutedEventArgs e)
         {
             //UPDATE THE USER ID THING HERE
-            ClipboardModel board = new ClipboardModel();
+            NewClipboardModel board = new NewClipboardModel();
             board.board_name = this.NameBox.Text;
 
             //LOL UPDATE THIS ASAP
-            board.id = User.GetUserId(); //"SOME USERID THAT I NEED TO GET FROM SOMEWHERE";
+            board.user_id = User.GetUserId(); //"SOME USERID THAT I NEED TO GET FROM SOMEWHERE";
 
             try
             {
@@ -60,7 +61,7 @@ namespace Clippy
             win.Content = home;
         }
 
-        private async Task<Uri> AddNewClipboard(ClipboardModel board)
+        private async Task<Uri> AddNewClipboard(NewClipboardModel board)
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("v1/clipboard", board);
             response.EnsureSuccessStatusCode();

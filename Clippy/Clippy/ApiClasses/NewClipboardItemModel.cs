@@ -9,7 +9,7 @@ namespace Clippy
     /// <summary>
     /// class representing a new item added to a clipboard. Called from HomeScreen primarily
     /// </summary>
-    public class NewClipboardItem
+    public class NewClipboardItemModel
     {
         public string board_item { get; set; }
     }

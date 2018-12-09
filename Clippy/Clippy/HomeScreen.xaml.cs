@@ -212,7 +212,8 @@ namespace Clippy
         /// <returns>List of ClipboardContentsModels</returns>
         private async Task<List<ClipboardContentsModel>> GetClipboardContent()
         {
-            string uri = "/v1/clipboard/" + User.GetUserId() +"?type=mostRecent || type=all";
+            string uri = "/v1/clipboard/" + User.GetBoardId(User_Clipboards.SelectedValue.ToString()) +
+                "?type=mostRecent || type=all";
             String response = 
                 await ApiHelper.ApiClient.GetStringAsync(uri);
             List<ClipboardContentsModel> content = 
@@ -239,7 +240,7 @@ namespace Clippy
         private async Task<Uri> UpdateClipboard()
         {
             string new_item = Clipboard.GetText(TextDataFormat.Text);
-            NewClipboardItem item = new NewClipboardItem();
+            NewClipboardItemModel item = new NewClipboardItemModel();
             item.board_item = new_item;
 
             string uri = "/v1/clipboard/" + User.GetBoardId(this.User_Clipboards.Text)
@@ -263,7 +264,21 @@ namespace Clippy
             String new_selection = e.AddedItems[0].ToString();
             //Change the ListBox to contain the elements of the other board.
 
-            List<ClipboardContentsModel> boardContents = await GetClipboardContent();
+            List<ClipboardContentsModel> boardContents = new List<ClipboardContentsModel>();
+            bool completed = false;
+            try
+            {
+                boardContents = await GetClipboardContent();
+                completed = true;
+            }
+            catch (HttpRequestException)
+            {
+            }
+            if (!completed)
+            {
+                boardContents = new List<ClipboardContentsModel>();
+            }
+            
 
             List<String> content = new List<String>();
 
