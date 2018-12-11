@@ -41,13 +41,14 @@ Pages were developed as a tool for web applications, however they are just as ap
 This class is one of the most important in the application. It contains all of the information relevant to the application user such as username, password, user ID, user clipboards and board ID's, and provides the application with ways to access the needed information. The class is passed through the application pages such that each page has access to the pertinent user information. A future version of Clippy would involve making this class into a more proper singleton, initialized to a "null" value before a user logs in and after they log out.
 
 ### ClippyTests
-This is the unit testing project that was used to implement small unit tests on the Clippy application. The solution contains ClippyTests.cs, which is the actual test file where unit tests are written. The unit tests created were meant to test the components of the application that are likely to change in future iterations, particularly the varying files in ApiClasses.
+This is the testing project within Clippy that was used to implement small unit and integration tests on the Clippy application. The solution contains ClippyUnitTests.cs, which is the test file where the unit tests are written, and ClippyIntegrationTests.cs, which is the file containing all of the written integration tests. The unit tests created were meant to test the components of the application that are in place now but likely to change in future iterations, particularly the varying files in ApiClasses. The integration tests are larger tests, intending to test how the system components work together. In addition to the written Integration Tests, there are a handful of handwritten integration tests used to test the private aspects of the Clippy app. These tests are in the OtherIntegrationTests.pdf file, and provide test scenarios and expected behavior. They blur the line between Integration and Systems tests, however they help insure that the application functions as is intended. 
 
-### Integration Tests
 
 
 More details on any of these files can be found inside the files themselves.
 
+
+### Installation and Use
 
 
 
