@@ -48,7 +48,7 @@ This is the testing project within Clippy that was used to implement small unit 
 More details on any of these files can be found inside the files themselves.
 
 
-### Installation and Use
+## Installation and Use
 The Clippy Desktop application is designed to be used on a Windows machine running Windows 10 with at least 4 GB memory. The application may run on older versions of windows, however this has not been tested and cannot be verified.
 
 To get the all of the Clippy project files and executable, use the command line to navigate to the desired loction and enter the command:
