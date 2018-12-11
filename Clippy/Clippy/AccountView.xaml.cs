@@ -1,41 +1,35 @@
 ﻿using Clippy.ApiClasses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Clippy
 {
     /// <summary>
-    /// Interaction logic for AccountView.xaml
+    /// This is the Interaction logic for AccountView.xaml. It serves as the
+    /// logic behind the AccountView page, such as buttons and API requests
+    /// Created by Keola Dunn
     /// </summary>
     public partial class AccountView : Page
     {
-        //user data passed to the page
+        //user data 
         private CurrentUser User;
 
         /// <summary>
-        /// ctor to create the page and initial contents
+        /// Ctor to create the page and initial contents
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="user">
+        /// CurrentUser object containing all of the pertinent user data
+        /// </param>
         public AccountView(CurrentUser user)
         {
             InitializeComponent();
             User = user;
             NameBox.Text = "Jane Doe";
             EmailBox.Text = User.GetUsername();
+            //Other fields would be set here in the same way as above
         }
 
         #region Buttons
@@ -94,8 +88,6 @@ namespace Clippy
 
             if (deleteAcct == MessageBoxResult.Yes)
             {
-                //Delete the account
-
                 try
                 {
                     DeleteAccountRequest();
@@ -124,12 +116,15 @@ namespace Clippy
         /// <summary>
         /// API call to update account information
         /// </summary>
-        /// <param name="acct"></param>
-        /// <returns></returns>
+        /// <param name="acct">
+        /// AccountInfoModel class containing all of the information to update a class
+        /// </param>
+        /// <returns>
+        /// Returns an AccountInfoModel containing all of the updated class information
+        /// </returns>
         private async Task<AccountInfoModel> UpdateAccount(AccountInfoModel acct)
-        {
-            //UPDATE THE BELOW LINE WITH PROPER :userid
-            HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync("v1/user/:userid", acct);
+        {    
+            HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync("v1/user/"+User.GetUserId().ToString(), acct);
             response.EnsureSuccessStatusCode();
             AccountInfoModel ret = await response.Content.ReadAsAsync<AccountInfoModel>();
             return ret;
@@ -138,10 +133,13 @@ namespace Clippy
         /// <summary>
         /// API call tp delete an account
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// Status of the API call
+        /// </returns>
         private async Task<HttpStatusCode> DeleteAccountRequest()
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("v1/user/:userid");
+
+            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("v1/user/"+User.GetUserId().ToString());
             return response.StatusCode;
         }
 

@@ -1,23 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Net.Http.Headers;
-using System.Net.NetworkInformation;
 
 namespace Clippy
 {
     /// <summary>
-    /// Class to help manage the HttpClient and provide the basis for API access
+    /// Class to help manage the HttpClient and provide the basis for API access.
+    /// Static to prevent multiple different instances of HttpClients, which can
+    /// cause various exceptions
+    /// Created by Keola Dunn
     /// </summary>
     public static class ApiHelper
     {
+        // Client called and used throughout the app
         public static HttpClient ApiClient { get; set; } = null;
 
+        // Base URI for all Clippy application API calls
         private static readonly string Uri = "http://54.162.248.95:4000";
 
+        // Initiates the client to specified URI and API request settings
         public static void InitializeClient()
         {
                 ApiClient = new HttpClient();

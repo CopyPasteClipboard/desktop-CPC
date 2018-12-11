@@ -1,36 +1,28 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Clippy
 {
     /// <summary>
-    /// Interaction logic for HomeScreen.xaml
+    /// Interaction logic for HomeScreen.xaml page
+    /// Created by Keola Dunn
     /// </summary>
     public partial class HomeScreen : Page
     {
-
+        // User information for the app
         private CurrentUser User;
 
         /// <summary>
-        /// constructor that creates an application homescreen page
+        /// Constructor that makes the HomeScreen page
         /// </summary>
+        /// <param name="user">
+        /// CurrentUser object containing the current user's information
+        /// </param>
         public HomeScreen(CurrentUser user)
         {
             InitializeComponent();
@@ -45,34 +37,37 @@ namespace Clippy
         /// </summary>
         private async void SetupHomeScreen()
         {
-            //Gets all the clipboard names to be displayed on the homescreen
+            //Gets all the clipboards' info to be displayed on the homescreen
             List<ClipboardModel> boards = null;
-
             try
             {
                 boards = await GetClipboards();
             }catch(HttpRequestException)
             {
-                MessageBox.Show("Features and state may not be present/saved while API is unreachable",
-                    "API is Unreachable");
+                MessageBox.Show("Features and state may not be present/saved while" +
+                    " API is unreachable", "API is Unreachable");
                 boards = new List<ClipboardModel>();
             }
-            List<String> boardNames = new List<String>();
 
+            // if boards were received from the API call, set list of board names to the 
+            // HomeScreen so that they are visable to the user
+            List<String> boardNames = new List<String>(); 
             if (boards != null && boards.Count!=0)
             {
                 foreach (ClipboardModel board in boards)
                 {
                     boardNames.Add(board.board_name);
                 }
-
                 User.SetClipboards(boards);
             }
 
+            // Set User_Clipboards to retreived clipboards, and set selection to
+            // first board
             this.User_Clipboards.ItemsSource = boardNames;
             User_Clipboards.SelectedIndex = User_Clipboards.SelectedIndex = 0;
 
-            //Gets all of the initial board contents to display on the home screen
+            // Gets all of the initial selected board contents to display on the 
+            // home screen
             List<ClipboardContentsModel> boardContents = null;
             try
             {
@@ -80,8 +75,9 @@ namespace Clippy
             }
             catch (HttpRequestException) {}
 
+            // Sets the add board contents to a list and make the list viewable
             List<String> content = new List<String>();
-            if (boardContents != null)
+            if (boardContents != null && boardContents.Count!=0)
             {
                 foreach (ClipboardContentsModel board in boardContents)
                 {
@@ -209,7 +205,9 @@ namespace Clippy
         /// <summary>
         /// Gets the content of a Clippy clipboard.
         /// </summary>
-        /// <returns>List of ClipboardContentsModels</returns>
+        /// <returns>
+        /// List of ClipboardContentsModels
+        /// </returns>
         private async Task<List<ClipboardContentsModel>> GetClipboardContent()
         {
             string uri = "/v1/clipboard/" + User.GetBoardId(User_Clipboards.SelectedValue.ToString()) +
@@ -224,7 +222,9 @@ namespace Clippy
         /// <summary>
         /// Gets all of the user's clipboards
         /// </summary>
-        /// <returns>List of ClipboardModels</returns>
+        /// <returns>
+        /// List of ClipboardModels
+        /// </returns>
         private async Task<List<ClipboardModel>> GetClipboards()
         {
             string uri = "/v1/user/" + User.GetUserId() + "/clipboards";
@@ -236,7 +236,9 @@ namespace Clippy
         /// <summary>
         /// Adds a new item to a Clippy clipboard
         /// </summary>
-        /// <returns>Uri of API call</returns>
+        /// <returns>
+        /// Uri of API call
+        /// </returns>
         private async Task<Uri> UpdateClipboard()
         {
             string new_item = Clipboard.GetText(TextDataFormat.Text);

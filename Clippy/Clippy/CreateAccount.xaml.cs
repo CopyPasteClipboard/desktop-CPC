@@ -1,29 +1,21 @@
 ﻿using Clippy.ApiClasses;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Clippy
 {
     /// <summary>
-    /// Interaction logic for CreateAccount.xaml
+    /// Interaction logic for CreateAccount.xaml page interaction. Instantiated
+    /// from MainWindow log in screen using the "Create Account" button
+    /// Created be Keola Dunn
     /// </summary>
     public partial class CreateAccount : Page
     {
         /// <summary>
-        /// Simple ctor
+        /// Simple CreateAccount page constructor
         /// </summary>
         public CreateAccount()
         {
@@ -33,18 +25,20 @@ namespace Clippy
         #region Buttons
 
         /// <summary>
-        /// Confirm account creation logic
+        /// Confirm account creation, and send the API request to create the account.
+        /// After account creation, returns the user to the log in screen, where they
+        /// will have to log in with their new account information.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            
-            //use the text boxes here to create the account and sign the individual into their account
+            // verify that the user has given adequate input
             if (!EmailBox.Text.Trim().Equals("") &&
                 !PasswordBox.Password.Trim().Equals("") &&
                 !PhoneNumBox.Text.Trim().Equals(""))
             {
+                //Load content into CreateAccountModel
                 CreateAccountModel acct = new CreateAccountModel();
                 acct.username = this.EmailBox.Text;
                 acct.password = this.PasswordBox.Password;
@@ -53,7 +47,6 @@ namespace Clippy
                 try
                 {
                     PostNewAcct(acct);
-                    
                 }
                 catch (HttpRequestException) {
                     MessageBox.Show("API Connection Failure");
@@ -61,21 +54,23 @@ namespace Clippy
             }
             else
             {
+                // User did not include all required information
                 MessageBox.Show("Please enter all information",
                     "Invalid Account Information", MessageBoxButton.OK);
             }
 
-            
+            MessageBox.Show("Account created! Please sign in with your new " +
+                "credentials!", "Account Successfully Created!", MessageBoxButton.OK);
+            // return the user to the log in screen. In the future, implement log
+            // in content as its own page
             MainWindow newWindow = new MainWindow();
-            newWindow.Show();
+            newWindow.Show(); 
             var win = Window.GetWindow(this);
             win.Close();
-            
-
         }
 
         /// <summary>
-        /// Cancel the account creation
+        /// Cancel the account creation and return the user to the Log In screen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -89,6 +84,8 @@ namespace Clippy
         }
 
         #endregion
+
+        #region ApiMethods
 
         /// <summary>
         /// New Account API Post
@@ -105,5 +102,8 @@ namespace Clippy
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
+
+        #endregion
+
     }
 }

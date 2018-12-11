@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Clippy.ApiClasses
+﻿namespace Clippy.ApiClasses
 {
+    /// <summary>
+    /// This class is the model used to create a new clipboard with a Post API
+    /// request.
+    /// Created by Keola Dunn
+    /// </summary>
     public class NewClipboardModel
     {
         public int user_id { get; set; } = -1;

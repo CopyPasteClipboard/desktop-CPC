@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Clippy
 {
     /// <summary>
     /// Class representing the current user signed into the app and all of
-    /// their needed/available information
+    /// the user's needed/available information
+    /// Created by Keola Dunn
     /// </summary>
     public class CurrentUser
     {
-        //User variables
+        // User information
         private string Username { get; } = null;
         private int UserId { get; } = -1;
         private string Password { get; } = null;
@@ -20,9 +17,11 @@ namespace Clippy
         private List<ClipboardModel> Clipboards { get; set; } = null; 
 
         /// <summary>
-        /// Ctor for a CurrentUser based on a UserLoginInfoModel
+        /// Alt Ctor for a CurrentUser with a UserLoginInfoModel parameter
         /// </summary>
-        /// <param name="info"></param>
+        /// <param name="info">
+        /// UserLoginInfoModel from login containing most of the user information
+        /// </param>
         public CurrentUser(UserLoginInfoModel info)
         {
             Username = info.username;
@@ -32,7 +31,9 @@ namespace Clippy
         /// <summary>
         /// returns the CurrentUser username
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// String Username member
+        /// </returns>
         public string GetUsername()
         {
             return Username;
@@ -41,7 +42,9 @@ namespace Clippy
         /// <summary>
         /// Returns the current user phone number
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// String Phone member
+        /// </returns>
         public string GetPhoneNumber()
         {
             return Phone;
@@ -50,7 +53,9 @@ namespace Clippy
         /// <summary>
         /// Returns the current user's ID
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// Int UserId member
+        /// </returns>
         public int GetUserId()
         {
             return UserId;
@@ -59,7 +64,9 @@ namespace Clippy
         /// <summary>
         /// Gives the CurrentUser clipboards
         /// </summary>
-        /// <param name="boards"></param>
+        /// <param name="boards">
+        /// List of ClipboardModels containing all of the user's clipboards
+        /// </param>
         public void SetClipboards(List<ClipboardModel> boards)
         {
             Clipboards = boards;
@@ -68,8 +75,13 @@ namespace Clippy
         /// <summary>
         /// Find a boardId based on a boardname parameter for the user
         /// </summary>
-        /// <param name="boardName"></param>
-        /// <returns></returns>
+        /// <param name="boardName">
+        /// String representing the name of a Clipboard
+        /// </param>
+        /// <returns>
+        /// ID of the board with the name passed as a parameter. -1 if the
+        /// board does not exist
+        /// </returns>
         public int GetBoardId(string boardName)
         {
             int ret = -1;

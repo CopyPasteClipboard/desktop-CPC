@@ -1,28 +1,21 @@
 ﻿using Clippy.ApiClasses;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Clippy
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml inital application window
+    /// Created by Keola Dunn
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// MainWindow simple ctor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -30,29 +23,39 @@ namespace Clippy
 
         #region Buttons
 
+        /// <summary>
+        /// Log in logic when "Log In" button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            //This is the handling of logging in
+            // This is the handling of logging in
             String username = Username.Text;
             String password = Password.Password;
 
+            // insure username and password are not empty lengths 
             if(username.Length > 0 && password.Length > 0)
             {
                 LoginButton.IsEnabled = false;
                 NewAccount.IsEnabled = false;
-                //attempt log in API call (is what this should be)
+                //attempt log in API call 
                 try
                 {
-                    UserLoginInfoModel user = await connectToUserAcct(username, password);
+                    // await response because we do not want to proceed until
+                    // log in is validated
+                    UserLoginInfoModel user = 
+                        await connectToUserAcct(username, password);
                     if (user.id != -1)
                     {
+                        // User log in was successful
                         AppWindow home = new AppWindow(user);
                         home.Show();
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Invalid Username/Passord");
+                        MessageBox.Show("Invalid Username/Password");
                         LoginButton.IsEnabled = true;
                         NewAccount.IsEnabled = true;
                     }
@@ -66,6 +69,8 @@ namespace Clippy
 
                     if(result == MessageBoxResult.Yes)
                     {
+                        // This is a simulated log in available if the API is down for testing
+                        // purposes only
                         UserLoginInfoModel user = new UserLoginInfoModel();
                         user.id = 0;
                         user.username = "Jane_Doe@fake.scam";
@@ -92,6 +97,12 @@ namespace Clippy
             }
         }
 
+        /// <summary>
+        /// Button logic for selection of "Create Account"
+        /// Opens a create account page instance 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewAccount_Click(object sender, RoutedEventArgs e)
         {
             CreateAccount acct = new CreateAccount();
@@ -102,11 +113,16 @@ namespace Clippy
 
         #endregion
 
+        #region API Calls
 
-        /**
-         * connectToUserAcct - helper to connect a user to their actual account. Called 
-         * from LoginButton
-         */
+        /// <summary>
+        /// Attempts the API log in request to log a user into the application
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns>
+        /// UserLoginInfoModel containing all of the user's info from login
+        /// </returns>
         private async Task<UserLoginInfoModel> connectToUserAcct(String username, String password)
         {
             UserLoginInfoModel ret = new UserLoginInfoModel();
@@ -137,5 +153,7 @@ namespace Clippy
 
             return ret;
         }
+
+        #endregion
     }
 }

@@ -1,36 +1,37 @@
 ﻿using Clippy.ApiClasses;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Clippy
 {
     /// <summary>
-    /// Interaction logic for NewClipboard.xaml
+    /// Interaction logic for NewClipboard.xaml page
+    /// Created by Keola Dunn
     /// </summary>
     public partial class NewClipboard : Page
     {
-
+        // User data
         private CurrentUser User = null;
 
+        /// <summary>
+        /// Ctor to create the NewClipboard page
+        /// </summary>
+        /// <param name="user"></param>
         public NewClipboard(CurrentUser user)
         {
             InitializeComponent();
             User = user;
         }
 
+        /// <summary>
+        /// Button logic for new clipboard creation confirmation. Generates the
+        /// API request for a new clipboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConfirmChanges_Click(object sender, RoutedEventArgs e)
         {
             //UPDATE THE USER ID THING HERE
@@ -54,6 +55,11 @@ namespace Clippy
             win.Content = home;
         }
 
+        /// <summary>
+        /// Logic to cancel new clipboard creation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             HomeScreen home = new HomeScreen(User);
@@ -61,6 +67,13 @@ namespace Clippy
             win.Content = home;
         }
 
+        /// <summary>
+        /// API call to actually create the new clipboard
+        /// </summary>
+        /// <param name="board"></param>
+        /// <returns>
+        /// Uri of the new clipboard
+        /// </returns>
         private async Task<Uri> AddNewClipboard(NewClipboardModel board)
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("v1/clipboard", board);

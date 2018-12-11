@@ -7,6 +7,14 @@ using Clippy.ApiClasses;
 
 namespace ClippyTests
 {
+    /// <summary>
+    /// ClippyUnitTests class implementing the unit tests for the application
+    /// These tests are aimed at the smaller portions of the application, making
+    /// sure that members are set correctly and methods function as intended.
+    /// Additionally, they will indicate errors if, in future application versions,
+    /// these fundamental components are changed.
+    /// Created by Keola Dunn
+    /// </summary>
     [TestClass]
     public class ClippyUnitTests
     {
@@ -99,11 +107,11 @@ namespace ClippyTests
         [TestMethod]
         public void TestApiHelper3()
         {
-            if (ApiHelper.ApiClient == null)
+            using (ApiHelper.ApiClient)
             {
                 ApiHelper.InitializeClient();
+                Assert.AreEqual(ApiHelper.ApiClient.BaseAddress, new Uri("http://54.162.248.95:4000"));
             }
-            Assert.AreEqual(ApiHelper.ApiClient.BaseAddress, new Uri("http://54.162.248.95"));
         }
 
         [TestMethod]

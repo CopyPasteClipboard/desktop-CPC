@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Clippy.ApiClasses
+﻿namespace Clippy.ApiClasses
 {
     /// <summary>
     /// Class used as a model to create a new account using the api. Members are
     /// api post params
+    /// Created by Keola Dunn
     /// </summary>
     public class CreateAccountModel
     {

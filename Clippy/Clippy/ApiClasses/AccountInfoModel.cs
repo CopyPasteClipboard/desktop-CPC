@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Clippy.ApiClasses
+﻿namespace Clippy.ApiClasses
 {
     /// <summary>
-    /// Model class for updating an account's information. Used primarily in AccountView.xaml.cs
+    /// Model class for updating an account's information. 
+    /// Used primarily in AccountView.xaml.cs
+    /// Created by Keola Dunn
     /// </summary>
     public class AccountInfoModel
     {
-        public string username;
-        public string password;
-        public string phone_number;
+        public string username { get; set; } = null;
+        public string password { get; set; } = null;
+        public string phone_number { get; set; } = null;
     }
 }
