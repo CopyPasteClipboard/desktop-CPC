@@ -49,6 +49,15 @@ More details on any of these files can be found inside the files themselves.
 
 
 ### Installation and Use
+The Clippy Desktop application is designed to be used on a Windows machine running Windows 10 with at least 4 GB memory. The application may run on older versions of windows, however this has not been tested and cannot be verified.
+
+To get the all of the Clippy project files and executable, use the command line to navigate to the desired loction and enter the command:
+```
+git clone https://github.com/CopyPasteClipboard/desktop-CPC.git
+```
+
+Within the project, navigate to Clippy\Clippy\bin\Debug and run the Clippy.exe file.
+WARNING: In the application's current state, the Clippy.exe file must stay in the Debug folder. A shortcut can be created to access the app from a different location of the computer (e.g. Desktop)
 
 
 
